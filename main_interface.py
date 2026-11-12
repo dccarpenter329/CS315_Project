@@ -21,6 +21,8 @@ import hashlib
 import itertools
 import time
 import os	#r1
+import dictionary
+import hybrid
 
 foundPassword = False
 totalAttempts = 0
@@ -66,8 +68,10 @@ def main():
         # link to brute force code
     elif method==2:
         # link to dictionary method
+		dictionary.ADD_FUNCTION_NAME
     elif method==3:
         # link to hybrid method
+		hybrid.ADD_FUNCTION_NAME
 
 
 
