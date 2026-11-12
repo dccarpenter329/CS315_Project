@@ -8,9 +8,9 @@ def dictionary_password_cracking(password): #intake password from main interface
     print("sha256")
     print("sha512")
     hash_technique = input("Enter desired hash technique: ")
-    # while hash_technique != "md5" or "sha1" or "sha256" or "sha512":
-    #     print("Invalid hash technique. Please try again.")
-    #     hash_technique = input("Enter desired hash technique: ")
+    while hash_technique not in ["md5", "sha1", "sha256", "sha512"]:
+        print("Invalid hash technique. Please try again.")
+        hash_technique = input("Enter desired hash technique: ")
     # encoding the password using selected hash technique
     if hash_technique == "md5":
         hsh = hashlib.md5(password.encode('utf-8')).hexdigest()
