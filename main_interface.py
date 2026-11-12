@@ -1,4 +1,4 @@
-# File: passwordCracking.py
+# File: main_interface.py
 # Authors: Corinne Carpenter
 # 	 Lauren Chilen
 # 	 Sophia Eads
@@ -26,9 +26,10 @@ foundPassword = False
 totalAttempts = 0
 
 def validatePassword(password):
+	# first checking to see if password is correct length
     if len(password) != 8: # be 12345678 long
         return False
-
+	# initializing variable counts
     letters = 0
     numbers = 0
     symbols = 0
