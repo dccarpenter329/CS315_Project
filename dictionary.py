@@ -1,6 +1,6 @@
 # use hashlib library 
 import hashlib
-def dictionary_password_cracking(password) #intake password from main interface
+def dictionary_password_cracking(password): #intake password from main interface
 # user selects desired hash technique
     print("Hash technique: ")
     print("md5")
