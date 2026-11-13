@@ -60,20 +60,19 @@ def main():
     print("2-Dictionary method")
     print("3- Dictionary/brute force hybrid")
     method = input("What method would you like to use the crack the password?") # Selecting a method to password crack
-    while method != 1 or method !=2 or method !=3: 
+    while method not in ["1", "2", "3"]: 
         print("Please select a valid option- 1, 2, or 3 ")
         method = input("What method would you like to use the crack the password?")
 
-    if method==1:
+    if method=="1":
         # link to brute force code
 		bruteForce.ADD_FUNCTION_NAME
-    elif method==2:
+    elif method=="2":
         # link to dictionary method
 		# dictionary fucntion will intake target password and try to find the correct one
 		dictionary.dictionary_password_cracking(targetPassword)
-    elif method==3:
+    elif method=="3":
         # link to hybrid method
 		hybrid.hybrid_password_cracking(targetPassword)
-
 
 
