@@ -66,8 +66,10 @@ def main():
 
     if method==1:
         # link to brute force code
+		bruteForce.ADD_FUNCTION_NAME
     elif method==2:
         # link to dictionary method
+		# dictionary fucntion will intake target password and try to find the correct one
 		dictionary.dictionary_password_cracking(targetPassword)
     elif method==3:
         # link to hybrid method
