@@ -1,5 +1,14 @@
 # use hashlib library 
 import hashlib
+# FIX DISPLAY STATISTICS LATER
+def displayStatistics(startTime, endTime): #https://docs.python.org/3/library/time.html
+    print("unique passwords tested:", totalAttempts) #ask chatgpt how to add complexity to my program, it gave me this idea, i hated it, thank you chat
+    print("time spent trying to find password:", round(endTime - startTime, 4),"secs")
+    if foundPassword:
+        print("success")
+    else:
+        print("fail")
+
 def dictionary_password_cracking(password): #intake password from main interface
 # user selects desired hash technique
     print("Hash technique: ")
@@ -24,6 +33,8 @@ def dictionary_password_cracking(password): #intake password from main interface
     #opening file of 300 most common 5 letter nouns and possible password combinations
     f = open("dictionary_passwords.txt", "r", encoding= 'iso-8859-15') 
     ## hasing through all the options
+    # begin timer
+    startTime = time.perf_counter()
     for line in f:
         line = line.rstrip() # removing new line character
     #encoding the following password
@@ -37,5 +48,9 @@ def dictionary_password_cracking(password): #intake password from main interface
         hsh_test = hashlib.sha512(line.encode('iso-8859-15')).hexdigest()
     # comparing password and test password from dictionary
     if hsh_test == hsh:
+        #end timer
+        endTime = time.perf_counter()
         print('Found hash for: ', line)
         print(hsh_test)
+        #stats
+        displayStatistics(startTime, endTime)
