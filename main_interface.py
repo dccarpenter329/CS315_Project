@@ -73,7 +73,7 @@ def main():
 		dictionary.dictionary_password_cracking(targetPassword)
     elif method==3:
         # link to hybrid method
-		hybrid.ADD_FUNCTION_NAME
+		hybrid.hybrid_password_cracking(targetPassword)
 
 
 
