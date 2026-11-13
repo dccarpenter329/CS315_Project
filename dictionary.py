@@ -1,5 +1,6 @@
 # use hashlib library 
 import hashlib
+import time
 # FIX DISPLAY STATISTICS LATER
 def displayStatistics(startTime, endTime): #https://docs.python.org/3/library/time.html
     print("unique passwords tested:", totalAttempts) #ask chatgpt how to add complexity to my program, it gave me this idea, i hated it, thank you chat
@@ -33,24 +34,50 @@ def dictionary_password_cracking(password): #intake password from main interface
     #opening file of 300 most common 5 letter nouns and possible password combinations
     f = open("dictionary_passwords.txt", "r", encoding= 'iso-8859-15') 
     ## hasing through all the options
+    # setting hsh_test value
+    hsh_test_md5 = "HelloWorld"
+    hsh_test_sha1 = "HelloWorld"
+    hsh_test_sha256 = "HelloWorld"
+    hsh_test_sha512 = "HelloWorld"
     # begin timer
     startTime = time.perf_counter()
     for line in f:
         line = line.rstrip() # removing new line character
-    #encoding the following password
-    if hash_technique == "md5":
-        hsh_test = hashlib.md5(line.encode('iso-8859-15')).hexdigest()
-    elif hash_technique == "sha1":
-        hsh_test = hashlib.sha1(line.encode('iso-8859-15')).hexdigest()
-    elif hash_technique == "sha256":
-        hsh_test = hashlib.sha256(line.encode('iso-8859-15')).hexdigest()
-    elif hash_technique == "sha512":
-        hsh_test = hashlib.sha512(line.encode('iso-8859-15')).hexdigest()
-    # comparing password and test password from dictionary
-    if hsh_test == hsh:
-        #end timer
-        endTime = time.perf_counter()
-        print('Found hash for: ', line)
-        print(hsh_test)
-        #stats
-        displayStatistics(startTime, endTime)
+        #encoding the following password
+        while hsh not in [hsh_test_md5, hsh_test_sha1, hsh_test_sha256, hsh_test_sha512]:
+            hsh_test_md5 = hashlib.md5(line.encode('iso-8859-15')).hexdigest()
+            # comparing password and test password from dictionary
+            if hsh == hsh_test_md5: 
+                #end timer
+                endTime = time.perf_counter()
+                print("Password cracked using md5 method: ", line)
+                #stats
+                displayStatistics(startTime, endTime)
+                return
+            hsh_test_sha1 = hashlib.sha1(line.encode('iso-8859-15')).hexdigest()
+            # comparing password and test password from dictionary
+            if hsh == hsh_test_sha1: 
+                #end timer
+                endTime = time.perf_counter()
+                print("Password cracked using sha1 method: ", line)
+                #stats
+                displayStatistics(startTime, endTime)
+                return
+            hsh_test_sha256 = hashlib.sha256(line.encode('iso-8859-15')).hexdigest()
+            # comparing password and test password from dictionary
+            if hsh == hsh_test_sha256: 
+                #end timer
+                endTime = time.perf_counter()
+                print("Password cracked using sha256 method: ", line)
+                #stats
+                displayStatistics(startTime, endTime)
+                return
+            hsh_test_sha512 = hashlib.sha512(line.encode('iso-8859-15')).hexdigest()
+            # comparing password and test password from dictionary
+            if hsh == hsh_test_sha512: 
+                #end timer
+                endTime = time.perf_counter()
+                print("Password cracked using sha512 method: ", line)
+                #stats
+                displayStatistics(startTime, endTime)
+                return
