@@ -23,6 +23,7 @@ import time
 import os	#r1
 import dictionary
 import hybrid
+import bruteForce
 
 foundPassword = False
 totalAttempts = 0
