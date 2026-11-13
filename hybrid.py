@@ -1,6 +1,5 @@
 import time
-import os #https://www.geeksforgeeks.org/python/os-module-python-examples/ 
-#tell me why vscode hates me
+import os # [r1]
 import itertools
 
 baseWords = []
@@ -39,18 +38,18 @@ def loadWords():
     try:
         with open(filePath, "r") as file:
             for word in file:
-                word = word.strip().lower() #error checking no space no cap
+                word = word.strip().lower() #error checking for no spaces or capitals
                 if len(word) == 5 and word.isalpha():
                     if word not in baseWords:
                         baseWords.append(word) #check dictionary word.txt 
         return True
 
     except FileNotFoundError:
-        print("are you sure words.txt exists??")
+        print("Error: cannot find file")
         return False
 
     except OSError:
-        print("uhh something is wrong cant read file")
+        print("Error: cannot read file")
         return False
 # why is opening the fiel the hardest part of htis
 #https://runestone.academy/ns/books/published/fopp/Exceptions/standard-exceptions.html
@@ -117,30 +116,25 @@ def displayStatistics(startTime, endTime): #https://docs.python.org/3/library/ti
     else:
         print("fail")
 
-def main():
-    targetPassword = input("enter yo password twin: ")
-    #password check
-    if not validatePassword(targetPassword):
-        print("\nbad password. need 5 lower case letters, 2 numbers, 1 symbol (!, @, $)")
-        return
+def hybrid_password_cracking(targetPassword):
     #load dictionary
     if not loadWords():
         return
     if len(baseWords) == 0:
-        print("word not in dictionary")
+        print("Word not in dictionary.")
         return
-    print("going through combos")
-    #timer
+    print("Running through potential password combinations.")
+    # begin timer
     startTime = time.perf_counter()
-    #analysis
+    # Running analysis
     dictionaryAttack(targetPassword)
     #end timer
     endTime = time.perf_counter()
-    #stats
+    # display run time stat
     displayStatistics(startTime, endTime)
 # errors
 try:
-    main()
+    hybrid_password_cracking(targetPassword) # MAY NEED TO FIX THIS LINE
 except KeyboardInterrupt:
     print("\nwhy did u stop the program are u impatient") #am i funny
 except Exception as error:
