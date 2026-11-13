@@ -5,7 +5,6 @@ import time
 totalAttempts = 0
 foundPassword = False
 
-# FIX DISPLAY STATISTICS LATER
 def displayStatistics(startTime, endTime): # [r2]
     print("unique passwords tested:", totalAttempts) 
     print("time spent trying to find password:", round(endTime - startTime, 4),"secs")
