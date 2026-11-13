@@ -5,6 +5,7 @@ import time
 totalAttempts = 0
 foundPassword = False
 
+# FIX DISPLAY STATISTICS LATER
 def displayStatistics(startTime, endTime): # [r2]
     print("unique passwords tested:", totalAttempts) 
     print("time spent trying to find password:", round(endTime - startTime, 4),"secs")
@@ -34,7 +35,7 @@ def dictionary_password_cracking(password): #intake password from main interface
         hsh = hashlib.sha256(password.encode('utf-8')).hexdigest()
     elif hash_technique == "sha512":
         hsh = hashlib.sha512(password.encode('utf-8')).hexdigest()
-    print(hsh) # printing the generated hash
+    print("given password hash: ", hsh) # printing the generated hash
     #opening file of 300 most common 5 letter nouns and possible password combinations
     f = open("dictionary_passwords.txt", "r", encoding= 'utf-8') 
     # begin timer
