@@ -32,7 +32,7 @@ def loadWords():
 
     filePath = os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
-        "words.txt" #claude used this line because words.txt would not open filePath func 
+        "words.txt" 
     )
 
     try:
@@ -132,10 +132,3 @@ def hybrid_password_cracking(targetPassword):
     endTime = time.perf_counter()
     # display run time stat
     displayStatistics(startTime, endTime)
-# errors
-try:
-    hybrid_password_cracking(targetPassword) # MAY NEED TO FIX THIS LINE
-except KeyboardInterrupt:
-    print("\nwhy did u stop the program are u impatient") #am i funny
-except Exception as error:
-    print("\nprogram crashed", error)
