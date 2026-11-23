@@ -1,20 +1,18 @@
-
 import hashlib
 import itertools
 import time
 import os
 import dictionary
+import hybrid
 
 foundPassword = False
 totalAttempts = 0
-
 
 characters = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
     'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
     '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '!', '@', '$'
 ]
-
 
 def cycleCombo(combo):
     #convert initial string into list to be able to modify individual characters
@@ -99,12 +97,11 @@ def validatePassword(password):
 
     return letters == 5 and numbers == 2 and symbols == 1
 
-
 def main():
     targetPassword = input("Please enter password: ")
 
     while not validatePassword(targetPassword):
-        print("Password must contain exactly 5 letters, 2 numbers, and 1 symbol (!, @, $).")
+        print("Password must contain exactly 5 letters (lowercase), 2 numbers, and 1 symbol (!, @, $).")
         print("Please try again.")
         targetPassword = input("Please enter password: ")
 
@@ -125,6 +122,8 @@ def main():
     if method == "2":
         dictionary.dictionary_password_cracking(targetPassword)
 
+    if method == "3":
+        hybrid.hybrid_password_cracking(targetPassword)
 
 if __name__ == "__main__":
     main()
