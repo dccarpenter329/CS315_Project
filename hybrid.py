@@ -103,7 +103,7 @@ def dictionaryAttack(targetPassword):
                     totalAttempts += 1
                     if password == targetPassword:
                         foundPassword = True
-                        print("i found it bitch:", password)
+                        print("i found it:", password)
                         return True
     return False
 
